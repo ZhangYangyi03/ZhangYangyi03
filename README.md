@@ -21,6 +21,8 @@ LLM agent 的工具调用安全验证 · 芯片 EDA 编排 · 化学动力学约
 [eda-spine](https://github.com/ZhangYangyi03/eda-spine) 把 qoragent / assertforge / covagent 串成一条链：综合后的门级网表**必须仍满足**在 RTL 上已证的性质。
 [kinetics-spine](https://github.com/ZhangYangyi03/kinetics-spine) 把这四段 (search / prove / perturb / cover) 指向一个完全不含 EDA 的领域，用守恒量当门——用来回答一个可测量的问题：**这四段是 EDA 的形状，还是任何可信搜索的形状。**
 
+[**robot-spine**](https://github.com/ZhangYangyi03/robot-spine) 把同一副骨架指向运动：FK / IK / 胶囊碰撞 / 安全门，验证路径零依赖。它不接受的那个数字是「我的动力学方程是对的」——所以把这台臂交给**不是自己写的**引擎去算：49 个位姿上 `G(q)` 与 MuJoCo 的 `qfrc_bias` 差 **1.8e-15 N·m**，同一 PD 在两套 plant 上终点完全相同、**途中最大差 8.0e-3 rad**（积分器不同，如实分开报告）。单起点 IK 只到 **57%**，在多起点 100% 旁边一起印着，并在 CI 里断言它不许变好看。
+
 #### 数据侧
 
 - **[unifolm-wla-toolkit](https://github.com/ZhangYangyi03/unifolm-wla-toolkit)** — 按宇树 UnifoLM-WLA-1.0 官方规范实现的数据管线：54 维动作 / 60 维状态统一表示、SE(3) 相对位姿、零依赖 URDF 正运动学。不需要 GPU、真机、权重。15 步自检一条命令全过。规范里 7 处未定义的地方写成了[给宇树的说明](https://github.com/ZhangYangyi03/unifolm-wla-toolkit/blob/main/docs/note_to_unitree.md)。
