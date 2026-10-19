@@ -23,6 +23,18 @@ LLM agent 的工具调用安全验证 · 芯片 EDA 编排 · 化学动力学约
 
 [**robot-spine**](https://github.com/ZhangYangyi03/robot-spine) 把同一副骨架指向运动：FK / IK / 胶囊碰撞 / 安全门，验证路径零依赖。它不接受的那个数字是「我的动力学方程是对的」——所以把这台臂交给**不是自己写的**引擎去算：49 个位姿上 `G(q)` 与 MuJoCo 的 `qfrc_bias` 差 **1.8e-15 N·m**，同一 PD 在两套 plant 上终点完全相同、**途中最大差 8.0e-3 rad**（积分器不同，如实分开报告）。单起点 IK 只到 **57%**，在多起点 100% 旁边一起印着，并在 CI 里断言它不许变好看。
 
+#### 桌面与系统那一侧（2026-10 新增）
+
+同一个主张，换到"AI 能不能接管你自己的机器"这一层。
+
+| 仓库 | 它不接受的那个数字 |
+|---|---|
+| **[agent-os](https://github.com/ZhangYangyi03/agent-os)** | "AI 打通一切"这句话——拆成 L0 微码到 L8 云端九层，每层回答谁说了算、本机碰得到哪、碰不到的原因。L0 实测 Update Revision `0541400a`，**写不了**，理由写成物理事实而不是待办 |
+| **[agent-anyapp](https://github.com/ZhangYangyi03/agent-anyapp)** | "这个软件能被 AI 接管"——三条通道（official-api / local-db / client-drive）收敛成同一个 `{name,args,returns,channel}` 契约；微信实测是反例：28 个库 124,383,232 字节**零明文**、进程**零监听端口**，工具如实返回 unsupported 而不是报成功 |
+| **[kernel-lab](https://github.com/ZhangYangyi03/kernel-lab)** | "我能进内核"——KMDF 驱动骨架 + 测试签名 + VM 调试，全程走微软官方签名路；驱动的唯一 IOCTL 只返回调用者 PID，故意藏不住 |
+
+这三条线合起来的一句话：**把黑箱变成有契约、有安全边界、可被 AI 驱动的接口，并且把够不到的地方写成"够不到"，不是写成"还没做"。**
+
 #### 数据侧
 
 - **[unifolm-wla-toolkit](https://github.com/ZhangYangyi03/unifolm-wla-toolkit)** — 按宇树 UnifoLM-WLA-1.0 官方规范实现的数据管线：54 维动作 / 60 维状态统一表示、SE(3) 相对位姿、零依赖 URDF 正运动学。不需要 GPU、真机、权重。15 步自检一条命令全过。规范里 7 处未定义的地方写成了[给宇树的说明](https://github.com/ZhangYangyi03/unifolm-wla-toolkit/blob/main/docs/note_to_unitree.md)。
