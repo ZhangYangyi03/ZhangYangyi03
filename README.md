@@ -3,7 +3,7 @@
 > **A number is not a result until it has passed its own verification.**
 > **一个数字，在它没通过自己的验证之前，不算结果。**
 
-LLM agent tool-use safety · chip EDA orchestration · chemical kinetics reduction · ML evaluation auditing · verifiable sovereign-debt covenants
+LLM agent tool-use safety · chip EDA orchestration · chemical kinetics reduction · ML evaluation auditing · verifiable sovereign-debt covenants<br>
 LLM agent 的工具调用安全验证 · 芯片 EDA 编排 · 化学动力学约简 · 机器学习评测审计 · 主权债务条款的可验证执行
 
 **Featured / 代表作** · [autoforge](https://github.com/ZhangYangyi03/autoforge) · [agentic-eda](https://github.com/ZhangYangyi03/agentic-eda) · [unifolm-wla-toolkit](https://github.com/ZhangYangyi03/unifolm-wla-toolkit) · [debt-verify](https://github.com/ZhangYangyi03/debt-verify) · [agent-os](https://github.com/ZhangYangyi03/agent-os) · [robot-spine](https://github.com/ZhangYangyi03/robot-spine)
@@ -27,6 +27,7 @@ LLM agent 的工具调用安全验证 · 芯片 EDA 编排 · 化学动力学约
 [kinetics-spine](https://github.com/ZhangYangyi03/kinetics-spine) points the same four stages (search / prove / perturb / cover) at a domain with no EDA in it, using conservation laws as the gate — to answer a measurable question: **is this four-stage shape the shape of EDA, or the shape of any trustworthy search?**
 
 [eda-spine](https://github.com/ZhangYangyi03/eda-spine) 把 qoragent / assertforge / covagent 串成一条链：综合后的门级网表**必须仍满足**在 RTL 上已证的性质。
+
 [kinetics-spine](https://github.com/ZhangYangyi03/kinetics-spine) 把这四段 (search / prove / perturb / cover) 指向一个完全不含 EDA 的领域，用守恒量当门——用来回答一个可测量的问题：**这四段是 EDA 的形状，还是任何可信搜索的形状。**
 
 [**robot-spine**](https://github.com/ZhangYangyi03/robot-spine) — FK / IK / capsule collision / safety gate, with zero-dependency verification. The number it refuses to accept is "my dynamics equations are correct", so the arm is handed to an engine I did not write: across 49 poses, `G(q)` differs from MuJoCo's `qfrc_bias` by **1.8e-15 N·m**; the same PD controller reaches identical endpoints on both plants with **max deviation 8.0e-3 rad** en route (different integrators, reported separately). Single-start IK reaches only **57%** — printed next to the 100% from multi-start, and asserted in CI so it is not allowed to look better.
@@ -51,11 +52,11 @@ Together, these three say one thing: **turn black boxes into contracts with safe
 
 #### Data side / 数据侧
 
-- **[unifolm-wla-toolkit](https://github.com/ZhangYangyi03/unifolm-wla-toolkit)** — a data pipeline implementing Unitree UnifoLM-WLA-1.0's official spec: 54-D action / 60-D state unified representation, SE(3) relative poses, zero-dependency URDF forward kinematics. No GPU, no real robot, no weights. All 15 self-checks pass in one command. The 7 places where the spec is undefined are written up as [a note to Unitree](https://github.com/ZhangYangyi03/unifolm-wla-toolkit/blob/main/docs/note_to_unitree.md).
+- **[unifolm-wla-toolkit](https://github.com/ZhangYangyi03/unifolm-wla-toolkit)** — a data pipeline implementing Unitree UnifoLM-WLA-1.0's official spec: 54-D action / 60-D state unified representation, SE(3) relative poses, zero-dependency URDF forward kinematics. No GPU, no real robot, no weights. All 15 self-checks pass in one command. The 7 places where the spec is undefined are written up as [a note to Unitree](https://github.com/ZhangYangyi03/unifolm-wla-toolkit/blob/main/docs/note_to_unitree.md).<br>
   按宇树 UnifoLM-WLA-1.0 官方规范实现的数据管线：54 维动作 / 60 维状态统一表示、SE(3) 相对位姿、零依赖 URDF 正运动学。不需要 GPU、真机、权重。15 步自检一条命令全过。规范里 7 处未定义的地方写成了[给宇树的说明](https://github.com/ZhangYangyi03/unifolm-wla-toolkit/blob/main/docs/note_to_unitree.md)。
-- **[llm-safety-eval-audits](https://github.com/ZhangYangyi03/llm-safety-eval-audits)** — every recomputable number behind three manuscripts under review. Recomputing found: the grading script's fallback branch fired silently 28 times out of 120 trials; the rule classifier treated as ground truth is only 53% correct against human labels, and agrees with the LLM judge at 61.6% raw but **kappa 0.115**.
+- **[llm-safety-eval-audits](https://github.com/ZhangYangyi03/llm-safety-eval-audits)** — every recomputable number behind three manuscripts under review. Recomputing found: the grading script's fallback branch fired silently 28 times out of 120 trials; the rule classifier treated as ground truth is only 53% correct against human labels, and agrees with the LLM judge at 61.6% raw but **kappa 0.115**.<br>
   三篇在审稿件的全部可重算数据。重算发现：被打分脚本的回退分支在 120 次试验里悄悄触发了 28 次；被当作真值的规则分类器在人工标注上只有 53% 正确，与 LLM 裁判原始一致率 61.6% 但 **kappa 仅 0.115**。
-- **[craftagent](https://github.com/ZhangYangyi03/craftagent)** — machine-tool condition data to anomaly attribution, standard library only (on that factory machine, one missing dependency is one more thing that cannot be installed). Synthetic data with planted ground truth; all 5 acceptance checks pass.
+- **[craftagent](https://github.com/ZhangYangyi03/craftagent)** — machine-tool condition data to anomaly attribution, standard library only (on that factory machine, one missing dependency is one more thing that cannot be installed). Synthetic data with planted ground truth; all 5 acceptance checks pass.<br>
   机床工况数据到异常归因，只用 Python 标准库（工厂那台机器上少一个依赖就少一个装不上的理由）。合成数据埋真值，5 项验收全过。
 
 #### Research / 研究向
