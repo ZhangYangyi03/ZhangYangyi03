@@ -6,7 +6,7 @@
 LLM agent tool-use safety · chip EDA orchestration · chemical kinetics reduction · ML evaluation auditing · verifiable sovereign-debt covenants<br>
 LLM agent 的工具调用安全验证 · 芯片 EDA 编排 · 化学动力学约简 · 机器学习评测审计 · 主权债务条款的可验证执行
 
-**Featured / 代表作** · [autoforge](https://github.com/ZhangYangyi03/autoforge) · [agentic-eda](https://github.com/ZhangYangyi03/agentic-eda) · [unifolm-wla-toolkit](https://github.com/ZhangYangyi03/unifolm-wla-toolkit) · [debt-verify](https://github.com/ZhangYangyi03/debt-verify) · [agent-os](https://github.com/ZhangYangyi03/agent-os) · [robot-spine](https://github.com/ZhangYangyi03/robot-spine)
+**Featured / 代表作** · [autoforge](https://github.com/ZhangYangyi03/autoforge) · [agentic-eda](https://github.com/ZhangYangyi03/agentic-eda) · [unifolm-wla-toolkit](https://github.com/ZhangYangyi03/unifolm-wla-toolkit) · [debt-verify](https://github.com/ZhangYangyi03/debt-verify) · [agent-os](https://github.com/ZhangYangyi03/agent-os) · [robot-spine](https://github.com/ZhangYangyi03/robot-spine) · [materials-spine](https://github.com/ZhangYangyi03/materials-spine)
 
 ---
 
@@ -19,16 +19,17 @@ LLM agent 的工具调用安全验证 · 芯片 EDA 编排 · 化学动力学约
 | **[agentic-eda](https://github.com/ZhangYangyi03/agentic-eda)** | A circuit's area. Equivalence to the reference netlist must be proven first (`abc cec` returns counterexamples / `yosys equiv` requires 0 unproven). 13 strategies × 11 benchmarks, best −30.1% area / −61.2% depth, full flow down to sky130 layout. | 一个电路的面积——必须先证明与参考网表等价（abc cec 给反例 / yosys equiv 要求 0 unproven）。13 策略 × 11 基准，最优 -30.1% 面积 / -61.2% 深度，全链路到 sky130 版图 |
 | **[evidence-gate](https://github.com/ZhangYangyi03/evidence-gate)** | A model's AUC. Same code, two public targets: EGFR passes every gate, hERG is rejected (0.453 across eras). Label-permutation negative controls run first to falsify the pipeline, before any score is quoted. | 一个模型的 AUC——同一份代码两个公共靶点，EGFR 全门通过，hERG 被驳回（换年代 0.453）。先跑标签置换阴性对照证伪管线，再谈分数 |
 | **[tool-market](https://github.com/ZhangYangyi03/tool-market)** | Whether a tool is *alive*. A two-axis orthogonal state machine decouples "can it be called" from "which version is in effect"; append-only log with a SHA-256 hash chain. | 一个工具"活着"这件事——双轴正交状态机解耦"能否调用"与"哪个版本生效"，append-only 日志 + SHA-256 哈希链 |
+| **[materials-spine](https://github.com/ZhangYangyi03/materials-spine)** | A gain from Bayesian acquisition. Four measured materials tables, eight rules, five seeds: **no Bayesian arm beats the best model-free baseline**, and the repository says so — next to the permuted-response control that keeps its own gains small (space-filling +24.63±0.46 vs random +19.96±5.48 on the hard table; control +1.27, −0.53). 330 campaign rows, 443 on one hash chain whose head is published outside the ledger, so rewriting the last row is visible. | 一个贝叶斯采集带来的增益——四张实测材料表、八种规则、五个种子：**没有任何贝叶斯臂打赢最好的无模型基线**，而且仓库照实印出来，旁边就是它自己的阴性对照（置换响应后增益必须小：难表上 space-filling +24.63±0.46 对 random +19.96±5.48，对照 +1.27、−0.53）。330 条 campaign 行、443 行一条哈希链，链头发布在账本之外，改尾行也会被发现 |
 
 #### The same skeleton, tested again in another domain / 同一套骨架，换一个领域再测一遍
 
 [eda-spine](https://github.com/ZhangYangyi03/eda-spine) chains qoragent / assertforge / covagent into one pipeline: the post-synthesis gate-level netlist **must still satisfy** the properties already proven at RTL.
 
-[kinetics-spine](https://github.com/ZhangYangyi03/kinetics-spine) points the same four stages (search / prove / perturb / cover) at a domain with no EDA in it, using conservation laws as the gate — to answer a measurable question: **is this four-stage shape the shape of EDA, or the shape of any trustworthy search?**
+[materials-spine](https://github.com/ZhangYangyi03/materials-spine) points the same four stages (search / prove / perturb / cover) at a domain with no EDA in it — measured materials tables, conservation-free, engineering laws tested against their own controls — to answer a measurable question: **is this four-stage shape the shape of EDA, or the shape of any trustworthy search?** Earlier probes in the same slot (kinetics-spine, formula-screen, process-spine) are archived and folded into it.
 
 [eda-spine](https://github.com/ZhangYangyi03/eda-spine) 把 qoragent / assertforge / covagent 串成一条链：综合后的门级网表**必须仍满足**在 RTL 上已证的性质。
 
-[kinetics-spine](https://github.com/ZhangYangyi03/kinetics-spine) 把这四段 (search / prove / perturb / cover) 指向一个完全不含 EDA 的领域，用守恒量当门——用来回答一个可测量的问题：**这四段是 EDA 的形状，还是任何可信搜索的形状。**
+[materials-spine](https://github.com/ZhangYangyi03/materials-spine) 把这四段 (search / prove / perturb / cover) 指向一个完全不含 EDA 的领域——实测材料数据表、工程法则对着自己的对照挨个受审——用来回答一个可测量的问题：**这四段是 EDA 的形状，还是任何可信搜索的形状。** 这个位置上前几轮探针（kinetics-spine、formula-screen、process-spine）已归档并合并进它。
 
 [**robot-spine**](https://github.com/ZhangYangyi03/robot-spine) — FK / IK / capsule collision / safety gate, with zero-dependency verification. The number it refuses to accept is "my dynamics equations are correct", so the arm is handed to an engine I did not write: across 49 poses, `G(q)` differs from MuJoCo's `qfrc_bias` by **1.8e-15 N·m**; the same PD controller reaches identical endpoints on both plants with **max deviation 8.0e-3 rad** en route (different integrators, reported separately). Single-start IK reaches only **57%** — printed next to the 100% from multi-start, and asserted in CI so it is not allowed to look better.
 
